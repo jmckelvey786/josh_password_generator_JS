@@ -1,34 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+// creating strings to create a pool to generate code from.
+var lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+var uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var numerals = "0123456789";
+// creating an empty string to store user selections.
+var passwordpool = "";
+
+var characterselect = false; 
+
+// created a while loop to collect user inputs and make sure we dont have empty passwords.
+  while (!characterselect) {
+    var isUseLowerCase = confirm("Would you like to have lower case letters in your password? Hit cancel if your answer is 'no'.");
+    if (isUseLowerCase){
+     passwordpool = passwordpool + lowercaseLetters;
+    };
+    console.log("islowercase test: " + passwordpool);
+    var isUseUpperCase = confirm("Would you like to have upper case letters in your password? Hit cancel if your answer is 'no'.");
+    if(isUseUpperCase) {
+      passwordpool = passwordpool + uppercaseLetters;
+    };
+    console.log("isUppercase test: " + passwordpool);
+    var isNumerals = confirm("Would you like to have numbers in your password? Hit cancel if your answer is 'no'.");
+    if(isNumerals) {
+      passwordpool = passwordpool + numerals;
+    };
+    console.log("Numerals test: " + passwordpool);
+    var isSpecialCharacters = confirm("Would you like to have Special Characters in your password? Hit cancel if your answer is 'no'.");
+    if(isSpecialCharacters) {
+      passwordpool = passwordpool + specialCharacters;
+    };
+    console.log("Special characters test: " + passwordpool);
+
+    if (passwordpool === "") {
+      alert("You must choose at least one character type to generate a password.")
+      characterselect = false;
+    }
+    else {
+      characterselect = true;
+    }
+  }
