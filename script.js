@@ -41,3 +41,20 @@ var characterselect = false;
       characterselect = true;
     }
   }
+
+  alert("You have selected the following character types for your password:\nLowercase: " + isUseLowerCase + "\nUppercase: " + isUseUpperCase + "\nNumerals: " + isNumerals + "\nSpecial Characters: " + isSpecialCharacters); 
+
+  var numOfChar = Number(prompt("How long would you like your password to be?\n Password must be at least 8 characters long and no more than 128.\n"));
+  console.log("Number of characters: " + numOfChar);
+  if (isNaN(numOfChar) || numOfChar<8 || numOfChar>128) {
+    correctRange = false;
+    while(!correctRange) {
+      alert("You have selected a value outside of acceptable range.")
+      numOfChar = Number(prompt("How long would you like your password to be?\n Password must be at least 8 characters long and no more than 128.\n"));
+      if (isNaN(numOfChar)||numOfChar<8||numOfChar>128) {
+        correctRange = false;
+      }
+      else {
+        correctRange = true;
+      }
+    }
