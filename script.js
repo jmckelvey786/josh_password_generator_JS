@@ -58,3 +58,16 @@ var characterselect = false;
         correctRange = true;
       }
     }
+    function generatePassword() {
+        var passwordstring = "";
+        for (var i = 0; i < numOfChar; i++) {
+          var j = Math.floor(Math.random() * (passwordpool.length -1));
+          console.log(j)
+          passwordstring = passwordstring + passwordpool[j];
+        }
+      return passwordstring;
+      }
+      var password = generatePassword();
+      passwordpool = "";
+      var passwordText = document.querySelector("#password");
+      passwordText.value = password;
